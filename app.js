@@ -21,7 +21,7 @@ const getPlayerChoice = () => {
         return DEFAULT_USER_CHOICE;
     }
     return selection;
-}
+};
 
 const getComputerChoice = () => {
     const randomValue = Math.random();
@@ -32,7 +32,7 @@ const getComputerChoice = () => {
     } else {
         return SCISSORS;
     }
-}
+};
 
 // General syntax: (arg1, arg2) => { ... }
 // const add = (a, b) => a + b;
@@ -73,4 +73,16 @@ startGameBtn.addEventListener('click', () => {
     const computerChoice = getComputerChoice();
     const winner = getWinner(computerChoice, playerChoice);
     console.log(winner);
+    
+    let message = `You picked ${playerChoice}, computer picked ${computerChoice}, therefore `;
+    
+    if (winner === RESULT_DRAW) {
+        message = message + `it's a draw.`;
+    } else if (winner === RESULT_PLAYER_WINS) {
+        message = message + `you won!`;
+    } else {
+        message = message + `you lost! Hah, loser.`;
+    }
+    alert(message);
+    gameIsRunning = false;
 });
